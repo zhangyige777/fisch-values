@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BaitDetailPage({ params }: Props {
+export default function BaitDetailPage({ params }: Props) {
   const bait = sampleBait.find((b) => b.id === params.id);
 
   if (!bait) {

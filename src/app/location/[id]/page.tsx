@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function LocationDetailPage({ params }: Props {
+export default function LocationDetailPage({ params }: Props) {
   const location = sampleLocations.find((l) => l.id === params.id);
 
   if (!location) {
