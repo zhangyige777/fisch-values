@@ -10,7 +10,7 @@ export function CalculatorForm() {
   const [selectedBait, setSelectedBait] = useState('');
   const [weather, setWeather] = useState('clear');
   const [timeOfDay, setTimeOfDay] = useState('day');
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<any>(null);
 
   const calculateProfit = () => {
     // Simple calculation logic
