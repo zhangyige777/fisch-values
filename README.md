@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fisch Values Calculator
+
+The ultimate Fisch tool for optimizing your fishing strategy. Calculate profits, find active codes, and discover the best rods.
+
+## Features
+
+- **Value List** - Complete database of all Fisch fish and item values
+- **Calculator** - Calculate your hourly earnings with advanced simulation
+- **Active Codes** - Always up-to-date list of working Fisch codes
+- **Tier List** - Complete rod rankings from S to F tier
+
+## SEO Keywords Targeted
+
+- fisch value list (1,000 searches)
+- fisch calculator (1,000 searches)
+- fisch codes (74,000 searches!)
+- best rods in fisch (5,400 searches)
+
+## Tech Stack
+
+- Next.js 16 with App Router
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+
+## Deployment
+
+This site is optimized for deployment on Cloudflare Pages.
+
+### Build Command
+
+```bash
+npm run build
+```
+
+### Output Directory
+
+```bash
+out
+```
+
+### Environment Variables
+
+No environment variables required.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── page.tsx              # Homepage (Value List)
+│   ├── calculator/page.tsx   # Calculator page
+│   ├── fisch-codes/page.tsx  # Codes page
+│   └── tier-list/page.tsx    # Tier list page
+├── components/               # Reusable components
+│   ├── ui/                  # Base UI components
+│   ├── CalculatorForm.tsx
+│   ├── CalculationResults.tsx
+│   └── ...
+├── data/                     # Game data
+│   └── sample-data.ts
+├── lib/                      # Utilities
+│   └── utils.ts
+└── types/                    # TypeScript definitions
+    └── game.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT License - see LICENSE file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgments
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Built with [Claude Code](https://claude.com/claude-code)
+- Game data based on Fisch Roblox game
