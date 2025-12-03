@@ -44,7 +44,7 @@ export function ValueListTable() {
 
   const calculateMaxValue = (item: any) => {
     if (item.category === 'fish' && item.mutations) {
-      const maxMultiplier = Math.max(...Object.values(item.mutations));
+      const maxMultiplier = Math.max(...Object.values(item.mutations).filter((v): v is number => typeof v === 'number'));
       return (item.baseValue || 0) * maxMultiplier;
     }
     return item.baseValue || 0;

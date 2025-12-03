@@ -106,9 +106,7 @@ export interface Enchant {
   applicableTo: 'rod' | 'all';
 }
 
-export interface GameItem extends (Fish | Rod | Bait | Location) {
-  _id: string;
-}
+export type GameItem = Fish | Rod | Bait | Location;
 
 // Calculator Types
 export interface CalculatorInput {
