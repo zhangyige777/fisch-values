@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ValueListTable } from '@/components/ValueListTable';
-import { QuickStats } from '@/components/QuickStats';
-import { SearchBar } from '@/components/SearchBar';
+import { RealTimeValueList } from '@/components/RealTimeValueList';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Calculator, Trophy, Fish } from 'lucide-react';
 
@@ -31,11 +29,9 @@ export default function HomePage() {
         </h1>
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
           Complete database of all Fisch fish values, rod prices, and item costs.
-          Real-time updated database with over 300+ items. Find the most valuable fish and items in Fisch.
+          <span className="text-green-400 font-semibold"> Live prices updated every minute!</span>
+          Find the most valuable fish and items in Fisch.
         </p>
-
-        {/* Quick Stats */}
-        <QuickStats />
 
         {/* Quick Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -60,21 +56,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Search Section */}
-      <section className="max-w-7xl mx-auto px-4 py-8">
-        <SearchBar placeholder="Search for fish, rods, items..." />
-      </section>
-
       {/* Value List Section */}
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-4">Complete Value List</h2>
+          <h2 className="text-3xl font-bold mb-4">Live Value List</h2>
           <p className="text-gray-400">
-            Find the value of any item in Fisch. Filter by category and sort by value or rarity.
+            Real-time Fisch item values with price tracking. Click refresh for latest prices.
           </p>
         </div>
 
-        <ValueListTable />
+        <RealTimeValueList />
       </section>
 
       {/* Featured Items */}

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Copy, CheckCircle, Clock, Gift } from 'lucide-react';
+import { Copy, CheckCircle, Clock, Gift, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { workingCodes } from '@/data/sample-data';
+import { useRealTimeData } from '@/hooks/useRealTimeData';
 
 function CodeCard({ code, onCopy }: { code: any; onCopy: () => void }) {
   const [copied, setCopied] = useState(false);
@@ -51,9 +51,14 @@ function CodeCard({ code, onCopy }: { code: any; onCopy: () => void }) {
 
 export function CodesClient() {
   const [copyCount, setCopyCount] = useState(0);
+  const { data: codes, isLoading, error, lastUpdated, refresh } = useRealTimeData({
+    type: 'codes',
+    updateInterval: 300000, // 5分钟更新一次
+    enableAutoUpdate: true
+  });
 
-  const activeCodes = workingCodes.filter(code => code.status === 'working');
-  const expiredCodes = workingCodes.filter(code => code.status === 'expired');
+  const activeCodes = codes?.filter((code: any) => code.status === 'working' || code.status === 'active') || [];
+  const expiredCodes = codes?.filter((code: any) => code.status === 'expired') || [];
 
   return (
     <div className="min-h-screen bg-slate-900 text-white">
@@ -65,6 +70,28 @@ export function CodesClient() {
           <p className="text-xl text-gray-300 mb-8">
             Latest working Roblox Fisch codes for December 2024. Get free C$, items, and boosts!
           </p>
+
+          {/* 更新状态 */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full ${isLoading ? 'bg-yellow-400 animate-pulse' : 'bg-green-400'}`}></div>
+              <span className="text-sm text-gray-300">
+                {isLoading ? 'Updating...' : 'Live Codes'}
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">
+              Updated: {lastUpdated.toLocaleTimeString()}
+            </span>
+            <button
+              onClick={refresh}
+              className="flex items-center gap-2 px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+              disabled={isLoading}
+            >
+              <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+              Refresh
+            </button>
+          </div>
+
           {copyCount > 0 && (
             <div className="bg-green-600/20 border border-green-600/30 rounded-lg px-4 py-2 mb-4">
               <p className="text-green-400">✓ {copyCount} code{copyCount > 1 ? 's' : ''} copied to clipboard!</p>
@@ -82,7 +109,7 @@ export function CodesClient() {
           </div>
 
           <div className="grid gap-4 mb-12">
-            {activeCodes.map((code) => (
+            {activeCodes.map((code: any) => (
               <CodeCard
                 key={code.code}
                 code={code}
@@ -109,7 +136,7 @@ export function CodesClient() {
             </div>
 
             <div className="grid gap-4 opacity-60">
-              {expiredCodes.map((code) => (
+              {expiredCodes.map((code: any) => (
                 <div key={code.code} className="bg-slate-800 rounded-lg p-6 border border-slate-700">
                   <div className="flex justify-between items-center">
                     <div>
